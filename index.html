@@ -1,0 +1,2013 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angebot — Marke & Digitaler Auftritt | Viliam Cosmari</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #f8f9fa;
+        --surface: #ffffff;
+        --surface2: #f1f3f4;
+        --border: rgba(0, 0, 0, 0.08);
+        --border2: rgba(0, 0, 0, 0.14);
+        --text: #202124;
+        --text2: #5f6368;
+        --text3: #9aa0a6;
+        --blue: #1a73e8;
+        --blue-dim: rgba(26, 115, 232, 0.08);
+        --blue-border: rgba(26, 115, 232, 0.25);
+        --green: #1e8e3e;
+        --green-dim: rgba(30, 142, 62, 0.1);
+        --orange: #e37400;
+        --orange-dim: rgba(227, 116, 0, 0.08);
+        --gold: #fbbc04;
+        --serif: "DM Serif Display", Georgia, serif;
+        --sans: "DM Sans", system-ui, sans-serif;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --max: 860px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 15px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* NOISE TEXTURE */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.2;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        height: 64px;
+        background: rgba(248, 249, 250, 0.92);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-brand {
+        font-family: var(--serif);
+        font-size: 17px;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        color: var(--text2);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-badge {
+        background: var(--blue-dim);
+        border: 1px solid var(--blue-border);
+        color: var(--blue);
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
+
+      /* LAYOUT */
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 40px 80px;
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 32px;
+        font-weight: 500;
+      }
+
+      .hero-eyebrow::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: #1a73e8;
+      }
+
+      .hero h1 {
+        font-family: var(--serif);
+        font-size: clamp(42px, 7vw, 72px);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--blue);
+      }
+
+      .hero-sub {
+        font-size: 17px;
+        color: var(--text2);
+        max-width: 520px;
+        margin-bottom: 56px;
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+
+      .hero-meta-item {
+      }
+
+      .hero-meta-label {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 4px;
+      }
+
+      .hero-meta-value {
+        font-size: 14px;
+        color: var(--text2);
+      }
+
+      /* SECTION DIVIDER */
+      .section-divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 0, 0, 0.1) 20%,
+          rgba(0, 0, 0, 0.1) 80%,
+          transparent
+        );
+        margin: 0 40px;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 100px 0;
+      }
+
+      .section-label {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-family: var(--serif);
+        font-size: clamp(28px, 4vw, 40px);
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+
+      .section-sub {
+        font-size: 16px;
+        color: var(--text2);
+        font-weight: 300;
+        line-height: 1.65;
+        max-width: 560px;
+        margin-bottom: 56px;
+      }
+
+      /* QUOTE BLOCK */
+      .quote-block {
+        border-left: 2px solid var(--blue);
+        padding: 24px 32px;
+        margin: 48px 0;
+        background: var(--blue-dim);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      }
+
+      .quote-text {
+        font-family: var(--serif);
+        font-size: 20px;
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .quote-author {
+        font-size: 13px;
+        color: var(--text3);
+      }
+
+      .lead-text {
+        font-size: 16px;
+        color: var(--text2);
+        line-height: 1.75;
+        font-weight: 300;
+        margin-bottom: 20px;
+      }
+
+      .lead-bold {
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      /* APPROACH CARDS */
+      .approach-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 48px;
+      }
+
+      .approach-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        transition: border-color 0.3s;
+      }
+
+      .approach-card:hover {
+        border-color: #dadce0;
+      }
+
+      .approach-num {
+        font-family: var(--serif);
+        font-size: 48px;
+        line-height: 1;
+        color: #dadce0;
+        margin-bottom: 16px;
+      }
+
+      .approach-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 12px;
+      }
+
+      .approach-body {
+        font-size: 14px;
+        color: var(--text2);
+        line-height: 1.65;
+        margin-bottom: 20px;
+      }
+
+      .pro-con {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .pro {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--green);
+        align-items: flex-start;
+      }
+
+      .con {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--orange);
+        align-items: flex-start;
+      }
+
+      .pro::before {
+        content: "✓";
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .con::before {
+        content: "↗";
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* PACKAGE TABS */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 4px;
+        margin-bottom: 40px;
+        width: fit-content;
+      }
+
+      .tab {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--text2);
+        transition: all 0.2s;
+      }
+
+      .tab.active {
+        background: #1a73e8;
+        color: #fff;
+      }
+
+      .tab:hover:not(.active) {
+        color: var(--text);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* PACKAGE HEADER */
+      .package-header {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 40px;
+        margin-bottom: 32px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .package-title {
+        font-family: var(--serif);
+        font-size: 28px;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+
+      .package-sub {
+        font-size: 14px;
+        color: var(--text2);
+      }
+
+      .package-price-box {
+        text-align: right;
+        flex-shrink: 0;
+      }
+
+      .package-price {
+        font-family: var(--serif);
+        font-size: 48px;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        line-height: 1;
+      }
+
+      .package-price-label {
+        font-size: 12px;
+        color: var(--text3);
+        margin-top: 4px;
+      }
+
+      .package-running {
+        font-size: 13px;
+        color: var(--blue);
+        margin-top: 6px;
+      }
+
+      /* FEATURE GROUPS */
+      .feature-group {
+        margin-bottom: 40px;
+      }
+
+      .feature-group-title {
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text3);
+        font-weight: 500;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 4px;
+      }
+
+      .feature-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+      }
+
+      .feature-row:last-child {
+        border-bottom: none;
+      }
+
+      .feature-label {
+        font-size: 14px;
+        color: var(--text2);
+        flex: 1;
+        line-height: 1.5;
+      }
+
+      .feature-check {
+        color: var(--green);
+        font-size: 14px;
+        flex-shrink: 0;
+        font-weight: 500;
+      }
+
+      .feature-addon {
+        color: var(--text3);
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+
+      .feature-note {
+        font-size: 12px;
+        color: var(--text3);
+        padding: 12px 16px;
+        background: var(--surface2);
+        border-radius: var(--radius-sm);
+        margin-top: 8px;
+        border-left: 2px solid var(--orange);
+      }
+
+      /* TIMELINE */
+      .timeline {
+        position: relative;
+        padding-left: 32px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+        width: 1px;
+        background: linear-gradient(180deg, var(--blue) 0%, var(--border) 100%);
+      }
+
+      .tl-item {
+        position: relative;
+        padding-bottom: 40px;
+      }
+
+      .tl-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .tl-dot {
+        position: absolute;
+        left: -38px;
+        top: 4px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #1a73e8;
+        border: 2px solid #f8f9fa;
+        box-shadow: 0 0 0 3px var(--blue-dim);
+      }
+
+      .tl-dot.done {
+        background: var(--green);
+        box-shadow: 0 0 0 3px var(--green-dim);
+      }
+
+      .tl-phase {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--blue);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+
+      .tl-title {
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+
+      .tl-body {
+        font-size: 14px;
+        color: var(--text2);
+        line-height: 1.65;
+      }
+
+      .tl-duration {
+        display: inline-block;
+        margin-top: 10px;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      /* HOURS TABLE */
+      .hours-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .hours-table th {
+        text-align: left;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        padding: 0 16px 12px;
+        border-bottom: 1px solid var(--border);
+        font-weight: 500;
+      }
+
+      .hours-table th:last-child {
+        text-align: right;
+      }
+
+      .hours-table td {
+        padding: 13px 16px;
+        font-size: 14px;
+        color: var(--text2);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hours-table td:last-child {
+        text-align: right;
+        color: var(--blue);
+        font-weight: 500;
+      }
+
+      .hours-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .hours-total td {
+        color: var(--text) !important;
+        font-weight: 600 !important;
+        background: var(--surface2);
+      }
+
+      .hours-total td:last-child {
+        color: var(--blue) !important;
+      }
+
+      /* ADDONS */
+      .addon-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .addon-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .addon-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--text3);
+        flex-shrink: 0;
+      }
+
+      .addon-label {
+        font-size: 14px;
+        color: var(--text2);
+      }
+
+      .addon-tag {
+        margin-left: auto;
+        font-size: 11px;
+        color: var(--text3);
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 3px 10px;
+        white-space: nowrap;
+      }
+
+      /* CLOSING */
+      .closing-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 56px;
+        text-align: center;
+      }
+
+      .closing-serif {
+        font-family: var(--serif);
+        font-size: clamp(24px, 4vw, 36px);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+
+      .closing-body {
+        font-size: 16px;
+        color: var(--text2);
+        font-weight: 300;
+        line-height: 1.75;
+        max-width: 560px;
+        margin: 0 auto 40px;
+      }
+
+      .closing-sig {
+        font-size: 15px;
+        color: var(--text2);
+      }
+
+      .closing-sig strong {
+        color: var(--text);
+        display: block;
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .closing-sig a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      /* PRICE SUMMARY */
+      .price-summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 56px 0;
+      }
+
+      .price-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .price-card.featured {
+        border-color: var(--blue-border);
+      }
+
+      .price-card.featured::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #1a73e8, transparent);
+      }
+
+      .pc-label {
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 8px;
+      }
+
+      .pc-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+
+      .pc-price {
+        font-family: var(--serif);
+        font-size: 44px;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .pc-running {
+        font-size: 13px;
+        color: var(--blue);
+        margin-bottom: 20px;
+      }
+
+      .pc-ustg {
+        font-size: 12px;
+        color: var(--text3);
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .footer-left {
+        font-size: 13px;
+        color: var(--text3);
+      }
+
+      .footer-right {
+        font-size: 13px;
+        color: var(--text3);
+        text-align: right;
+      }
+
+      /* SCROLL ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        animation: fadeUp 0.6s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.1s;
+        opacity: 0;
+      }
+
+      .delay-2 {
+        animation-delay: 0.2s;
+        opacity: 0;
+      }
+
+      .delay-3 {
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+
+      .delay-4 {
+        animation-delay: 0.4s;
+        opacity: 0;
+      }
+
+      /* PRINT */
+      @media print {
+        nav {
+          display: none;
+        }
+
+        body {
+          background: white;
+          color: black;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 40px 0;
+        }
+      }
+
+      /* MOBILE */
+      @media (max-width: 680px) {
+        nav {
+          padding: 0 20px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .container,
+        .hero {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+
+        .approach-grid,
+        .addon-grid,
+        .price-summary {
+          grid-template-columns: 1fr;
+        }
+
+        .package-header {
+          flex-direction: column;
+        }
+
+        .package-price-box {
+          text-align: left;
+        }
+
+        .closing-card {
+          padding: 32px 24px;
+        }
+
+        footer {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      /* DRIVING CAR */
+      .car-scene {
+        position: relative;
+        height: 56px;
+        overflow: hidden;
+        margin: 40px 0 0;
+        pointer-events: none;
+      }
+
+      .car-road {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 0, 0, 0.12) 10%,
+          rgba(0, 0, 0, 0.12) 90%,
+          transparent
+        );
+      }
+
+      .car-svg {
+        position: absolute;
+        bottom: 11px;
+        width: 96px;
+        animation: driveIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+      }
+
+      @keyframes driveIn {
+        0% {
+          left: -110px;
+          opacity: 0;
+        }
+
+        8% {
+          opacity: 1;
+        }
+
+        65% {
+          left: calc(50% - 48px);
+        }
+
+        80% {
+          left: calc(50% - 38px);
+        }
+
+        90% {
+          left: calc(50% - 50px);
+        }
+
+        100% {
+          left: calc(50% - 48px);
+          opacity: 1;
+        }
+      }
+
+      /* GLASSMORPHISM PRICE CARDS */
+      .price-summary {
+        position: relative;
+      }
+
+      .price-summary::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: -60px;
+        right: -60px;
+        bottom: -60px;
+        background:
+          radial-gradient(
+            ellipse at 25% 50%,
+            rgba(26, 115, 232, 0.07) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 75% 50%,
+            rgba(30, 142, 62, 0.05) 0%,
+            transparent 55%
+          );
+        pointer-events: none;
+        border-radius: 40px;
+        z-index: 0;
+      }
+
+      .price-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(24px) saturate(1.6) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(1.6) !important;
+        border: 1px solid rgba(26, 115, 232, 0.14) !important;
+        box-shadow:
+          0 2px 20px rgba(0, 0, 0, 0.05),
+          0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease !important;
+      }
+
+      .price-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow:
+          0 16px 48px rgba(0, 0, 0, 0.09),
+          0 2px 8px rgba(26, 115, 232, 0.1) !important;
+      }
+
+      .price-card.featured {
+        background: rgba(26, 115, 232, 0.05) !important;
+        border-color: rgba(26, 115, 232, 0.28) !important;
+        box-shadow:
+          0 4px 28px rgba(26, 115, 232, 0.1),
+          0 1px 4px rgba(26, 115, 232, 0.08) !important;
+      }
+
+      .price-card.featured:hover {
+        box-shadow:
+          0 16px 56px rgba(26, 115, 232, 0.16),
+          0 2px 8px rgba(26, 115, 232, 0.14) !important;
+      }
+
+      /* COUNTER */
+      .counter-wrap {
+        position: relative;
+        display: inline-block;
+      }
+
+      .counter-val {
+        font-family: var(--serif);
+        font-size: 44px;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        line-height: 1;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-brand">Viliam Cosmari</div>
+      <div class="nav-links">
+        <a href="#intro">Marke</a>
+        <a href="#pakete">Pakete</a>
+        <a href="#zeitplan">Zeitplan</a>
+        <a href="#abschluss">Kontakt</a>
+        <span class="nav-badge">Angebot 2026-002</span>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-eyebrow fade-up">
+          Angebot — Marke & Digitaler Auftritt
+        </div>
+        <h1 class="fade-up delay-1">
+          Ihre Marke.<br /><em>Ihr Auftritt.</em><br />Ihre Zukunft.
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          Branding · Website · Lead & Verwaltungs-Hub — exklusiv entwickelt für
+          die Autogalerie Dick & Ratz & Partner.
+        </p>
+        <div class="hero-meta fade-up delay-3">
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">An</div>
+            <div class="hero-meta-value">Autogalerie Dick & Ratz & Partner</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Von</div>
+            <div class="hero-meta-value">Viliam Cosmari · Hünfeld</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Datum</div>
+            <div class="hero-meta-value" id="currentDate"></div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Gültig bis</div>
+            <div class="hero-meta-value" id="validDate"></div>
+          </div>
+        </div>
+
+        <!-- DRIVING CAR -->
+        <div class="car-scene">
+          <div class="car-road"></div>
+          <svg
+            class="car-svg"
+            viewBox="0 0 96 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- Body -->
+            <rect x="4" y="14" width="88" height="16" rx="4" fill="#1a73e8" />
+            <!-- Roof -->
+            <path
+              d="M22 14 L30 4 Q32 2 36 2 L60 2 Q64 2 66 4 L74 14Z"
+              fill="#1a73e8"
+            />
+            <!-- Windshield -->
+            <path
+              d="M30 14 L36 5 L60 5 L66 14Z"
+              fill="rgba(255,255,255,0.35)"
+            />
+            <!-- Side windows -->
+            <rect
+              x="35"
+              y="6"
+              width="11"
+              height="8"
+              rx="1"
+              fill="rgba(255,255,255,0.25)"
+            />
+            <rect
+              x="49"
+              y="6"
+              width="11"
+              height="8"
+              rx="1"
+              fill="rgba(255,255,255,0.25)"
+            />
+            <!-- Front light -->
+            <rect x="88" y="17" width="5" height="4" rx="1" fill="#fbbc04" />
+            <!-- Rear light -->
+            <rect x="3" y="17" width="5" height="4" rx="1" fill="#ea4335" />
+            <!-- Wheels -->
+            <circle cx="23" cy="30" r="6" fill="#202124" />
+            <circle cx="23" cy="30" r="3" fill="#9aa0a6" />
+            <circle cx="73" cy="30" r="6" fill="#202124" />
+            <circle cx="73" cy="30" r="3" fill="#9aa0a6" />
+            <!-- Door line -->
+            <line
+              x1="48"
+              y1="14"
+              x2="48"
+              y2="30"
+              stroke="rgba(255,255,255,0.2)"
+              stroke-width="1"
+            />
+            <!-- Door handle -->
+            <rect
+              x="38"
+              y="21"
+              width="6"
+              height="2"
+              rx="1"
+              fill="rgba(255,255,255,0.4)"
+            />
+            <rect
+              x="56"
+              y="21"
+              width="6"
+              height="2"
+              rx="1"
+              fill="rgba(255,255,255,0.4)"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- INTRO -->
+      <section id="intro">
+        <div class="container">
+          <div class="section-label">Philosophie</div>
+          <h2 class="section-title">Ihre Marke ist mehr<br />als ein Logo.</h2>
+
+          <div class="quote-block">
+            <div class="quote-text">
+              „It's not who you are underneath — it's what you do that defines
+              you."
+            </div>
+            <div class="quote-author">
+              Rachel Dawes · Batman Begins (Christopher Nolan, 2005)
+            </div>
+          </div>
+
+          <p class="lead-text">
+            Was für Menschen gilt, gilt für Marken genauso. Ein Logo allein ist
+            keine Marke. Eine Schrift nicht. Eine Farbe nicht. Eine Marke ist
+            das Gesamtbild, das in den Köpfen Ihrer Zielgruppe entsteht —
+            geformt durch das konsequente, kanalübergreifende Zusammenspiel
+            aller visuellen, verbalen und emotionalen Elemente.
+          </p>
+          <p class="lead-text">
+            Noch bevor jemand Ihre Website liest oder mit Ihnen gesprochen hat,
+            hat er bereits einen Eindruck von Ihnen gebildet. Dieser erste
+            Eindruck entscheidet über Vertrauen und Kaufbereitschaft.
+          </p>
+          <p class="lead-text">
+            <span class="lead-bold"
+              >Es spielt keine Rolle, wer Sie wirklich sind — wenn Sie nach
+              außen etwas anderes kommunizieren.</span
+            >
+          </p>
+
+          <div class="approach-grid">
+            <div class="approach-card">
+              <div class="approach-num">01</div>
+              <div class="approach-title">Eigenständige Einzelmarke</div>
+              <div class="approach-body">
+                Jedes Unternehmen wird als vollständig unabhängige Marke
+                entwickelt. Partnerschaften können kommuniziert werden — jedoch
+                ausschließlich als Partnerschaft, nicht als visuelle Einheit.
+              </div>
+              <div class="pro-con">
+                <div class="pro">
+                  Marke bleibt dauerhaft erhalten — unabhängig von
+                  Geschäftsbeziehungen. Keine Neugestaltung nötig falls Wege
+                  sich trennen.
+                </div>
+                <div class="con">
+                  Keine gemeinsame visuelle Außenwirkung als Gruppe.
+                </div>
+              </div>
+            </div>
+            <div class="approach-card">
+              <div class="approach-num">02</div>
+              <div class="approach-title">Visuelle Markengruppe</div>
+              <div class="approach-body">
+                Mehrere Unternehmen unter einem gemeinsamen Markendach. Jedes
+                behält seinen Namen, ist jedoch durch ein einheitliches
+                Gestaltungssystem als Teil der Gruppe erkennbar.
+              </div>
+              <div class="pro-con">
+                <div class="pro">
+                  Stärkere Außenwirkung, mehr wahrgenommene Größe und einfachere
+                  Skalierbarkeit bei neuen Standorten.
+                </div>
+                <div class="con">
+                  Nachträgliche Trennung wäre mit erheblichem Aufwand und Kosten
+                  verbunden.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- PAKETE -->
+      <section id="pakete">
+        <div class="container">
+          <div class="section-label">Leistungsumfang</div>
+          <h2 class="section-title">Wählen Sie Ihr Paket.</h2>
+          <p class="section-sub">
+            Beide Varianten beinhalten professionelles Branding, eine exklusive
+            Website und einen integrierten Lead & Verwaltungs-Hub.
+          </p>
+
+          <div class="tabs">
+            <button class="tab active" onclick="switchTab('v1')">
+              Variante 1 — Einzelmarke
+            </button>
+            <button class="tab" onclick="switchTab('v2')">
+              Variante 2 — Markengruppe
+            </button>
+          </div>
+
+          <!-- VARIANTE 1 -->
+          <div class="tab-content active" id="tab-v1">
+            <div class="package-header">
+              <div>
+                <div class="package-title">Eigenständige Einzelmarke</div>
+                <div class="package-sub">
+                  Eine Marke · Eine Website · Ein Lead & Verwaltungs-Hub
+                </div>
+              </div>
+              <div class="package-price-box">
+                <div class="package-price">3.500 €</div>
+                <div class="package-price-label">
+                  Festpreis · gem. § 19 UStG
+                </div>
+                <div class="package-running">+ ca. 50 €/Monat laufend</div>
+              </div>
+            </div>
+
+            <div class="feature-group">
+              <div class="feature-group-title">Branding & Gestaltung</div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Logo (inkl. hell/dunkel Varianten sowie
+                  Farbschema-Ausführungen)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Bis zu 3 Korrekturabzüge / Feedback-Schleifen inklusive</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Farben, Typografie, Corporate Design</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Brandbook — Vollständige Dokumentation der Markenidentität:
+                  Logo-Verwendung, Farben, Typografie, Schutzräume,
+                  Anwendungsbeispiele</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Visitenkarten, Briefpapier, Briefumschläge</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Verkaufsmappen, Kennzeichenhalter, Preisschild</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Aufkleber, Stempel</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Fahnen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Klebefolie / Öffnungszeiten</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Beschilderung Büro/Werbung — 2 Stück (Design)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">E-Mail Signatur</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-note">
+                Druckproduktion exklusive — Produktionskosten nach Absprache und
+                Angebot des Druckers.
+              </div>
+            </div>
+
+            <div class="feature-group">
+              <div class="feature-group-title">
+                Development — Website & integrierter Lead-Hub
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Exklusive Website im Firmen-Branding — kein Template, kein
+                  Baukasten</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Automatische Fahrzeugbörse (mobile.de Anbindung)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Fahrzeugsuche & Filter (Marke, Preis, km, Kraftstoff,
+                  Kategorie etc.)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Geführter Fahrzeug-Finder (visuell, nicht Standard)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Merkliste (ohne Login, im Browser gespeichert)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Interaktiver Anfrage-Flow mit Terminauswahl</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >WhatsApp-Button (mit Fahrzeuginfo vorausgefüllt)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Suchauftrag („Wunschauto nicht dabei?")</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Automatische Badges (Neu, Preis gesenkt, Elektro)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Google & Mobile.de Bewertungen eingebunden</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Zertifikate & Auszeichnungen (Darstellung auf Website)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Datenschutz, Impressum, Cookie-Banner (DSGVO)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Google Business Profil Optimierung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">SEO-Grundstruktur</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Einsprachig (Deutsch)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Domain-Registrierung (1 Jahr)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Go-live & Einweisung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Integrierter Lead & Verwaltungs-Hub im Firmen-Branding</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Sicherer Login (Mitarbeiter / Inhaber)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Alle Anfragen & Leads zentral einsehen & verwalten</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Lead-Status (Neu / In Bearbeitung / Abgeschlossen)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Fahrzeug-Zuordnung, Notizen je Lead</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Statistiken & Übersicht (pro Woche, Monat, Fahrzeug)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Suchauftrag-Verwaltung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Mobil nutzbar — Smartphone & Desktop</span
+                ><span class="feature-check">✓</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- VARIANTE 2 -->
+          <div class="tab-content" id="tab-v2">
+            <div class="package-header">
+              <div>
+                <div class="package-title">Visuelle Markengruppe</div>
+                <div class="package-sub">
+                  3 Unternehmen · 3 Websites · 1 gemeinsamer Lead &
+                  Verwaltungs-Hub
+                </div>
+              </div>
+              <div class="package-price-box">
+                <div class="package-price">4.750 €</div>
+                <div class="package-price-label">
+                  Festpreis · gem. § 19 UStG
+                </div>
+                <div class="package-running">+ ca. 100 €/Monat laufend</div>
+              </div>
+            </div>
+
+            <div class="feature-group">
+              <div class="feature-group-title">
+                Branding & Gestaltung — Gruppe
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Übergeordnetes Markendach-Design (Gruppe)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Logo-System für alle 3 Unternehmen (inkl. hell/dunkel sowie
+                  Farbschema-Ausführungen)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Bis zu 3 Korrekturabzüge / Feedback-Schleifen inklusive</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Einheitliches Corporate Design (Farben, Typografie)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Brandbook — Gruppenmarke: Logo-System, Farben, Typografie,
+                  Anwendungsbeispiele für alle 3 Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Visitenkarten, Briefpapier, Briefumschläge — je
+                  Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Verkaufsmappen, Kennzeichenhalter, Preisschild — je
+                  Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Aufkleber, Stempel — je Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Fahnen — je Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Klebefolie / Öffnungszeiten — je Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Beschilderung Büro/Werbung — 2 Stück je Unternehmen
+                  (Design)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >E-Mail Signaturen — alle 3 Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-note">
+                Druckproduktion exklusive — Produktionskosten nach Absprache und
+                Angebot des Druckers.
+              </div>
+            </div>
+
+            <div class="feature-group">
+              <div class="feature-group-title">
+                Development — 3 Websites & gemeinsamer Lead-Hub
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >3 exklusive Websites im Firmen-Branding — kein Template, kein
+                  Baukasten</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Autogalerie Dick & Ratz — inkl. mobile.de Anbindung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Partner 2 — inkl. mobile.de Anbindung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Partner 3 — inkl. mobile.de Anbindung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Fahrzeugsuche & Filter, Finder, Merkliste, Anfrage-Flow,
+                  WhatsApp, Badges etc. — je Website</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Google & Mobile.de Bewertungen, Zertifikate, DSGVO, SEO — je
+                  Website</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Domain-Registrierung (1 Jahr) — je Website</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label">Go-live & Einweisung</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Gemeinsamer Lead & Verwaltungs-Hub im Gruppen-Branding</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Jedes Unternehmen sieht ausschließlich seine eigenen Leads &
+                  Fahrzeuge</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Administrator hat Zugriff auf Gesamtübersicht aller 3
+                  Unternehmen</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Rollenbasierter Zugriff (Mitarbeiter / Inhaber / Admin)</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Lead-Status, Fahrzeug-Zuordnung, Notizen, Statistiken pro
+                  Unternehmen & Gruppe</span
+                ><span class="feature-check">✓</span>
+              </div>
+              <div class="feature-row">
+                <span class="feature-label"
+                  >Mobil nutzbar — Smartphone & Desktop</span
+                ><span class="feature-check">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ADDONS -->
+      <section>
+        <div class="container">
+          <div class="section-label">Erweiterungen</div>
+          <h2 class="section-title">Auf Anfrage.</h2>
+          <p class="section-sub">
+            Nicht im Paket enthalten — jederzeit ergänzbar. Sprechen Sie uns an.
+          </p>
+          <div class="addon-grid">
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">
+                Fahrzeug-Vergleich (bis zu 3 nebeneinander)
+              </div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">Finanzierungsrechner</div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">Mehrsprachigkeit (EN, RU, TR ...)</div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">
+                CRM-Integration (z.B. DESC Software)
+              </div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">
+                Weitere Feedback-Schleifen (über 3 hinaus)
+              </div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">
+                Social Media Templates (Instagram, Facebook)
+              </div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">Weitere Druckvorlagen</div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+            <div class="addon-item">
+              <div class="addon-dot"></div>
+              <div class="addon-label">Ihr individueller Wunsch</div>
+              <div class="addon-tag">auf Anfrage</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ZEITPLAN -->
+      <section id="zeitplan">
+        <div class="container">
+          <div class="section-label">Ablauf</div>
+          <h2 class="section-title">Von heute bis Go-live.</h2>
+          <p class="section-sub">
+            Was wann passiert — und was von Ihnen benötigt wird.
+          </p>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-phase">Woche 1 — Kickoff</div>
+              <div class="tl-title">Erstgespräch & Briefing</div>
+              <div class="tl-body">
+                Ziele, Wünsche und Inhalte abstimmen. Sie stellen uns die
+                nötigen Zugangsdaten bereit — mobile.de API, Domain-Wunsch,
+                Öffnungszeiten, Firmeninfos.
+              </div>
+              <div class="tl-duration">1 Woche</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-phase">Phase 1 — Branding</div>
+              <div class="tl-title">Logo, Corporate Design & Brandbook</div>
+              <div class="tl-body">
+                Logo-Entwicklung, Farbwelt, Typografie, Corporate Design. Bis zu
+                3 Feedback-Schleifen. Nach Ihrer Abnahme: Erstellung aller
+                Druckvorlagen und des Brandbooks.
+              </div>
+              <div class="tl-duration">2–3 Wochen</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-phase">Phase 2 — Development</div>
+              <div class="tl-title">Website & Lead-Hub</div>
+              <div class="tl-body">
+                Nach Ihrer Branding-Abnahme startet die Website-Entwicklung.
+                Fahrzeugbörse, Anfrage-Flow, Lead-Hub — alles im neuen Branding.
+                Sie erhalten regelmäßige Preview-Links zum Feedback.
+              </div>
+              <div class="tl-duration">ca. 2 Monate</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-phase">Feinschliff</div>
+              <div class="tl-title">Tests, Freigabe & Vorbereitung</div>
+              <div class="tl-body">
+                Letzte Anpassungen, Ihre finale Freigabe, DSGVO-Check,
+                Domain-Verknüpfung, Go-live Vorbereitung.
+              </div>
+              <div class="tl-duration">1 Woche</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot done"></div>
+              <div class="tl-phase">Go-live</div>
+              <div class="tl-title">Ihre Website ist online ✓</div>
+              <div class="tl-body">
+                Einweisung in den Lead & Verwaltungs-Hub. Übergabe aller
+                Zugangsdaten und Unterlagen. Laufende Kosten danach: ca. 50
+                €/Monat (Variante 1) bzw. 100 €/Monat (Variante 2).
+              </div>
+              <div class="tl-duration">
+                Variante 1: ~10–11 Wochen gesamt · Variante 2: ~12–14 Wochen
+                gesamt
+              </div>
+            </div>
+          </div>
+
+          <!-- HOURS TABLE -->
+          <div style="margin-top: 64px">
+            <div class="section-label" style="margin-bottom: 20px">
+              Stunden-Aufteilung (intern)
+            </div>
+            <table class="hours-table">
+              <thead>
+                <tr>
+                  <th>Bereich</th>
+                  <th>Variante 1</th>
+                  <th>Variante 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Branding & Gestaltung inkl. Brandbook</td>
+                  <td>~20 Std.</td>
+                  <td>~30 Std.</td>
+                </tr>
+                <tr>
+                  <td>Website — Setup, API-Sync, Datenbank</td>
+                  <td>~18 Std.</td>
+                  <td>~28 Std.</td>
+                </tr>
+                <tr>
+                  <td>Website — Frontend (Liste, Detail, Finder, Flow)</td>
+                  <td>~22 Std.</td>
+                  <td>~42 Std.</td>
+                </tr>
+                <tr>
+                  <td>Lead & Verwaltungs-Hub</td>
+                  <td>~15 Std.</td>
+                  <td>~23 Std.</td>
+                </tr>
+                <tr>
+                  <td>DSGVO, SEO, Go-live, Einweisung</td>
+                  <td>~8 Std.</td>
+                  <td>~8 Std.</td>
+                </tr>
+                <tr class="hours-total">
+                  <td>Gesamt</td>
+                  <td>~83 Std.</td>
+                  <td>~131 Std.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- PREISÜBERSICHT -->
+      <section>
+        <div class="container">
+          <div class="section-label">Investition</div>
+          <h2 class="section-title">Transparent.<br />Kein Kleingedrucktes.</h2>
+          <div class="price-summary">
+            <div class="price-card">
+              <div class="pc-label">Variante 1</div>
+              <div class="pc-name">Eigenständige Einzelmarke</div>
+              <div class="pc-price">
+                <span class="counter-val" data-target="3500" data-suffix=" €"
+                  >3.500 €</span
+                >
+              </div>
+              <div class="pc-running">+ ca. 50 €/Monat laufend</div>
+              <div class="pc-ustg">
+                Gem. § 19 UStG · keine MwSt. · Festpreis
+              </div>
+            </div>
+            <div class="price-card featured">
+              <div class="pc-label">Variante 2</div>
+              <div class="pc-name">Visuelle Markengruppe · 3 Unternehmen</div>
+              <div class="pc-price">
+                <span class="counter-val" data-target="4750" data-suffix=" €"
+                  >4.750 €</span
+                >
+              </div>
+              <div class="pc-running">+ ca. 100 €/Monat laufend</div>
+              <div class="pc-ustg">
+                Gem. § 19 UStG · keine MwSt. · Festpreis
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- ABSCHLUSS -->
+      <section id="abschluss">
+        <div class="container">
+          <div class="closing-card">
+            <div class="closing-serif">
+              Dieses Angebot ist das Ergebnis echter Arbeit.
+            </div>
+            <div class="closing-body">
+              Wir haben Technologien, Architektur und Features gemeinsam im Team
+              durchdacht, abgewogen und gezielt auf Ihre Situation
+              zugeschnitten. Das kostet Zeit — und diese Zeit haben wir gerne
+              investiert, weil wir überzeugt sind, dass das Ergebnis stimmt.<br /><br />Wir
+              bauen Ihnen nicht einfach eine Website. Wir schaffen eine solide,
+              digitale Grundlage für Ihr Unternehmen — eine die wächst, skaliert
+              und dauerhaft für Sie arbeitet.<br /><br />Wir würden uns sehr
+              freuen, dieses Projekt gemeinsam mit Ihnen umzusetzen.
+            </div>
+            <div class="closing-sig">
+              <strong>Viliam Cosmari</strong>
+              Rathausberg · 36088 Hünfeld<br />
+              <a href="mailto:viliam@">viliam@cosmari.de</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-left">
+        Viliam Cosmari · Rathausberg · 36088 Hünfeld<br />
+        Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+      </div>
+      <div class="footer-right">
+        Angebot Nr. 2026-023<br />
+        Gültig 30 Tage ab Ausstellungsdatum.
+      </div>
+    </footer>
+
+    <script>
+      // Dates
+      const now = new Date();
+      const valid = new Date(now);
+      valid.setDate(valid.getDate() + 30);
+      const fmt = (d) =>
+        d.toLocaleDateString("de-DE", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        });
+      document.getElementById("currentDate").textContent = fmt(now);
+      document.getElementById("validDate").textContent = fmt(valid);
+
+      // Tabs
+      function switchTab(id) {
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((el) => el.classList.remove("active"));
+        document
+          .querySelectorAll(".tab")
+          .forEach((el) => el.classList.remove("active"));
+        document.getElementById("tab-" + id).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      // COUNTER ANIMATION
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1800;
+        const start = performance.now();
+        const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const value = Math.round(easeOut(progress) * target);
+          el.textContent = value.toLocaleString("de-DE") + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }
+
+      // INTERSECTION OBSERVER — counters + fade
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const counters = entry.target.querySelectorAll(
+                ".counter-val[data-target]",
+              );
+              counters.forEach((c) => {
+                if (!c.dataset.animated) {
+                  c.dataset.animated = true;
+                  animateCounter(c);
+                }
+              });
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      document
+        .querySelectorAll(".price-summary")
+        .forEach((el) => counterObserver.observe(el));
+
+      // SCROLL FADE-IN
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+              entry.target.style.transition =
+                "opacity 0.6s ease, transform 0.6s ease";
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".approach-card, .addon-item, .tl-item, .price-card")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(16px)";
+          fadeObserver.observe(el);
+        });
+    </script>
+  </body>
+</html>
